@@ -175,6 +175,6 @@ class AuctionDepositModelSerializer(serializers.ModelSerializer):
 from utils.auth import UserAuthentication
 class AuctionDepositlView(RetrieveAPIView):
 
-    # authentication_classes = [UserAuthentication,]
+    authentication_classes = [UserAuthentication,]
     queryset = models.AuctionItem.objects.filter(status__in=[2,3])
     serializer_class = AuctionDepositModelSerializer

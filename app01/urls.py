@@ -4,6 +4,7 @@ from app01.views import topic
 from app01.views import news
 from app01.views import comment
 from app01.views import auction
+from app01.views import bid
 
 urlpatterns = [
     url(r'^login/', auth.LoginView.as_view()),
@@ -31,6 +32,11 @@ urlpatterns = [
     url(r'^auction/item/(?P<pk>\d+)/$', auction.AuctionItemDetailView.as_view()),
     # 保证金
     url(r'^auction/deposit/(?P<pk>\d+)/$', auction.AuctionDepositlView.as_view()),
+
+
+    # 竞价 查看和提交两个接口
+
+    url(r'^bid/$', bid.BidView.as_view()),
 
     # '''继承GenericViewSet要写get对应的是啥'''
     # url(r'^auction2/$', auction.Auction2View.as_view({'get':'list'})),
