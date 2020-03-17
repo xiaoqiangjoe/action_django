@@ -147,11 +147,34 @@ class AuctionItemDetailView(RetrieveAPIView):
 # ##########保证金#########################################
 
 class AuctionDepositModelSerializer(serializers.ModelSerializer):
+    deposit = serializers.SerializerMethodField()
+    # 余额
+    balance = serializers.SerializerMethodField()
+
     class Meta:
         model = models.AuctionItem
-        fields = '__all__'
+        fields = ['id', 'title', 'cover', 'reserve_price', 'highest_price', 'deposit', ]
 
+    def get_balance(self, obj):
+        return self.context['request'].user.balance
 
-
+    def get_deposit(self, obj):
+        """
+        radio 框
+        :param obj:
+        :return:
+        """
+        result = {
+            "seleted": 1,
+            'data_list': [
+                {'id': 1, 'price': obj.deposit, 'text': '单品保证金'},
+                {'id': 2, 'price': obj.auction.deposit, 'text': '全场保证金'},
+            ]
+        }
+        return result
+from utils.auth import UserAuthentication
 class AuctionDepositlView(RetrieveAPIView):
+
+    # authentication_classes = [UserAuthentication,]
     queryset = models.AuctionItem.objects.filter(status__in=[2,3])
+    serializer_class = AuctionDepositModelSerializer

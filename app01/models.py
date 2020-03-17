@@ -16,6 +16,7 @@ class UserInfo(models.Model):
     avatar = models.CharField(verbose_name='头像', max_length=64)
     token = models.CharField(verbose_name='用户Token', max_length=64)
 
+    balance = models.PositiveIntegerField(verbose_name='余额',default=1000)
 
 class Topic(models.Model):
     """
