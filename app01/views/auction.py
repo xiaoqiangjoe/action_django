@@ -78,7 +78,6 @@ class AuctionModelDetailView(serializers.ModelSerializer):
         return models.DepositRecord.objects.filter(user=user_object, auction=obj, status=2, item__isnull=True).exists()
 
 
-
 class AuctionDetailView(RetrieveAPIView):
     """
     拍卖列表详细页面 专场详细
@@ -143,3 +142,16 @@ class AuctionItemDetailModelSerializer(serializers.ModelSerializer):
 class AuctionItemDetailView(RetrieveAPIView):
     queryset = models.AuctionItem.objects.filter(status__gt=1)
     serializer_class = AuctionItemDetailModelSerializer
+
+
+# ##########保证金#########################################
+
+class AuctionDepositModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.AuctionItem
+        fields = '__all__'
+
+
+
+class AuctionDepositlView(RetrieveAPIView):
+    queryset = models.AuctionItem.objects.filter(status__in=[2,3])

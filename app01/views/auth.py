@@ -132,9 +132,14 @@ class CredentialView(APIView):
         config = {
             # 临时密钥有效时长，单位是秒
             'duration_seconds': 1800,
-            'secret_id': 'AKIDkGlz4tb2i8GAqSosgHdiZElHafX9bbPI',
-            # 固定密钥
-            'secret_key': 'nKtDmsncS4QVUEispiNmvue8QSO5WhiU',
+
+            '''
+
+            'secret_id': 
+            ❤ 缺两行代码
+            'secret_key': 
+            '''
+
             # 设置网络代理
             # 'proxy': {
             #     'http': 'xx',

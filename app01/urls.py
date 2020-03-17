@@ -29,9 +29,17 @@ urlpatterns = [
     url(r'^auction/(?P<pk>\d+)/$', auction.AuctionDetailView.as_view()),
     # 单品详细
     url(r'^auction/item/(?P<pk>\d+)/$', auction.AuctionItemDetailView.as_view()),
+    # 保证金
+    url(r'^auction/deposit/(?P<pk>\d+)/$', auction.AuctionDepositlView.as_view()),
 
     # '''继承GenericViewSet要写get对应的是啥'''
     # url(r'^auction2/$', auction.Auction2View.as_view({'get':'list'})),
     # url(r'^auction2/(?P<pk>\d+)/$', auction.Auction2View.as_view({'get':'retrieve'})),
 
 ]
+
+
+
+
+
+
